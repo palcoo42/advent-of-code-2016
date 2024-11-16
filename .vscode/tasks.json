@@ -4,7 +4,7 @@
 		{
 			"type": "cargo",
 			"command": "run",
-			"args": [ "--package", "common" ],
+			"args": [ "--package", "day_01_no_time_for_a_taxicab" ],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -18,7 +18,7 @@
 		{
 			"type": "cargo",
 			"command": "test",
-			"args": [ "--package", "common" ],
+			"args": [ "--package", "day_01_no_time_for_a_taxicab" ],
 			"problemMatcher": [
 				"$rustc"
 			],
