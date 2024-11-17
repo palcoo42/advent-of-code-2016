@@ -43,11 +43,11 @@ impl Project {
     ///
     /// # Examples
     ///
-    /// Consider following project structure and assume we are in the _common_ project.
+    /// Consider following project structure and assume we are in the _advent-of-code_ project.
     ///
     /// ```text
     ///
-    ///    common
+    ///    advent-of-code
     ///    ├── resources
     ///    │   ├── png
     ///    │   │   ├── foo.png
@@ -67,12 +67,12 @@ impl Project {
     /// ```
     ///
     /// ```
-    /// use crate::common::env::project::Project;
+    /// use crate::advent_of_code::env::project::Project;
     ///
     /// let project = Project::new();
     /// let path = project.root_path();
     ///
-    /// assert!(path.ends_with("common"));
+    /// assert!(path.ends_with("advent-of-code"));
     ///
     /// ```
     pub fn root_path(&self) -> &PathBuf {
@@ -92,11 +92,11 @@ impl Project {
     ///
     /// # Examples
     ///
-    /// Consider following project structure and assume we are in the _common_ project.
+    /// Consider following project structure and assume we are in the _advent-of-code_ project.
     ///
     /// ```text
     ///
-    ///    common
+    ///    advent-of-code
     ///    ├── resources
     ///    │   ├── png
     ///    │   │   ├── foo.png
@@ -116,12 +116,12 @@ impl Project {
     /// ```
     ///
     /// ```
-    /// use crate::common::env::project::Project;
+    /// use crate::advent_of_code::env::project::Project;
     ///
     /// let project = Project::new();
     /// let path = project.project_path(&["resources", "png"]);
     ///
-    /// assert!(path.ends_with("common/resources/png"));
+    /// assert!(path.ends_with("advent-of-code/resources/png"));
     ///
     /// ```
     pub fn project_path(&self, sub_dirs: &[&str]) -> PathBuf {
@@ -148,11 +148,11 @@ impl Project {
     ///
     /// # Examples
     ///
-    /// Consider following project structure and assume we are in the _common_ project.
+    /// Consider following project structure and assume we are in the _advent-of-code_ project.
     ///
     /// ```text
     ///
-    ///    common
+    ///    advent-of-code
     ///    ├── resources
     ///    │   ├── png
     ///    │   │   ├── foo.png
@@ -172,12 +172,12 @@ impl Project {
     /// ```
     ///
     /// ```
-    /// use crate::common::env::project::Project;
+    /// use crate::advent_of_code::env::project::Project;
     ///
     /// let project = Project::new();
     /// let path = project.project_file(&["resources", "png"], "foo.png");
     ///
-    /// assert!(path.ends_with("common/resources/png/foo.png"));
+    /// assert!(path.ends_with("advent-of-code/resources/png/foo.png"));
     ///
     /// ```
     pub fn project_file(&self, sub_dirs: &[&str], file_name: &str) -> PathBuf {
@@ -197,11 +197,11 @@ impl Project {
     ///
     /// # Examples
     ///
-    /// Consider following project structure and assume we are in the _common_ project.
+    /// Consider following project structure and assume we are in the _advent-of-code_ project.
     ///
     /// ```text
     ///
-    ///    common
+    ///    advent-of-code
     ///    ├── resources
     ///    │   ├── png
     ///    │   │   ├── foo.png
@@ -221,12 +221,12 @@ impl Project {
     /// ```
     ///
     /// ```
-    /// use crate::common::env::project::Project;
+    /// use crate::advent_of_code::env::project::Project;
     ///
     /// let project = Project::new();
     /// let path = project.resource_file("README.md");
     ///
-    /// assert!(path.ends_with("common/resources/README.md"));
+    /// assert!(path.ends_with("advent-of-code/resources/README.md"));
     ///
     /// ```
     pub fn resource_file(&self, file_name: &str) -> PathBuf {
@@ -246,11 +246,11 @@ impl Project {
     ///
     /// # Examples
     ///
-    /// Consider following project structure and assume we are in the _common_ project.
+    /// Consider following project structure and assume we are in the _advent-of-code_ project.
     ///
     /// ```text
     ///
-    ///    common
+    ///    advent-of-code
     ///    ├── resources
     ///    │   ├── png
     ///    │   │   ├── foo.png
@@ -270,12 +270,12 @@ impl Project {
     /// ```
     ///
     /// ```
-    /// use crate::common::env::project::Project;
+    /// use crate::advent_of_code::env::project::Project;
     ///
     /// let project = Project::new();
     /// let path = project.resource_test_file("input.txt");
     ///
-    /// assert!(path.ends_with("common/tests/resources/input.txt"));
+    /// assert!(path.ends_with("advent-of-code/tests/resources/input.txt"));
     ///
     /// ```
     pub fn resource_test_file(&self, file_name: &str) -> PathBuf {
@@ -291,7 +291,7 @@ mod tests {
     fn test_project() {
         let project = Project::new();
 
-        assert!(project.root_path().ends_with("common"));
+        assert!(project.root_path().ends_with("advent-of-code"));
     }
 
     #[test]
@@ -299,7 +299,11 @@ mod tests {
         let project = Project::new();
         let path = project.project_path(&["tests", "resources"]);
 
-        assert!(path.ends_with("common/tests/resources"), "path: {:?}", path);
+        assert!(
+            path.ends_with("advent-of-code/tests/resources"),
+            "path: {:?}",
+            path
+        );
     }
 
     #[test]
@@ -308,7 +312,7 @@ mod tests {
         let path = project.resource_file("input.txt");
 
         assert!(
-            path.ends_with("common/resources/input.txt"),
+            path.ends_with("advent-of-code/resources/input.txt"),
             "path: {:?}",
             path
         );
@@ -320,7 +324,7 @@ mod tests {
         let path = project.resource_test_file("input.txt");
 
         assert!(
-            path.ends_with("common/tests/resources/input.txt"),
+            path.ends_with("advent-of-code/tests/resources/input.txt"),
             "path: {:?}",
             path
         );
@@ -332,7 +336,7 @@ mod tests {
         let path = project.project_file(&["tests", "resources"], "input.txt");
 
         assert!(
-            path.ends_with("common/tests/resources/input.txt"),
+            path.ends_with("advent-of-code/tests/resources/input.txt"),
             "path: {:?}",
             path
         );

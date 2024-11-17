@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-common = { path = "../common" }
+advent-of-code = { path = "../advent-of-code" }
 once_cell = { version = "1.20.*" }
 regex = { version = "1.11.*" }

@@ -4,3 +4,4 @@ pub mod direction;
 pub mod document;
 pub mod position;
 pub mod puzzle_parser;
+pub mod solver;

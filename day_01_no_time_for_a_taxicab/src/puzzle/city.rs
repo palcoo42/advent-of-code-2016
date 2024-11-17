@@ -20,7 +20,7 @@ impl City {
         Self::default()
     }
 
-    pub fn count_blocks_to_hq(&mut self, document: Document) -> u32 {
+    pub fn count_blocks_to_hq(&mut self, document: &Document) -> u32 {
         for action in document.iter() {
             self.step(action);
         }
@@ -85,7 +85,7 @@ mod tests {
         let mut city = City::new();
 
         assert_eq!(
-            city.count_blocks_to_hq(Document::new(vec![Action::Right(2), Action::Left(3)])),
+            city.count_blocks_to_hq(&Document::new(vec![Action::Right(2), Action::Left(3)])),
             5
         );
     }
@@ -95,7 +95,7 @@ mod tests {
         let mut city = City::new();
 
         assert_eq!(
-            city.count_blocks_to_hq(Document::new(vec![
+            city.count_blocks_to_hq(&Document::new(vec![
                 Action::Right(2),
                 Action::Right(2),
                 Action::Right(2)
@@ -109,7 +109,7 @@ mod tests {
         let mut city = City::new();
 
         assert_eq!(
-            city.count_blocks_to_hq(Document::new(vec![
+            city.count_blocks_to_hq(&Document::new(vec![
                 Action::Right(5),
                 Action::Left(5),
                 Action::Right(5),
