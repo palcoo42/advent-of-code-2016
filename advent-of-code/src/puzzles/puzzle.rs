@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use crate::puzzles::solution_progress_thread::SolutionProgressThread;
+use crate::puzzles::solution_progress_bar_thread::SolutionProgressBarThread;
 
 use super::{
     puzzle_error::PuzzleError, puzzle_solver::PuzzleSolver, reader::text_reader::TextReader,
@@ -82,12 +82,10 @@ where
         self.read_input_file()?;
 
         // Solve puzzle part 1
-        // TODO: Measure time
         let result_part_1 = self.solve_part_1()?;
         println!("{} {}", PART_1_PREFIX, result_part_1);
 
         // Solve puzzle part 2
-        // TODO: Measure time
         let result_part_2 = self.solve_part_2()?;
         println!("{} {}", PART_2_PREFIX, result_part_2);
 
@@ -104,8 +102,6 @@ where
                     reader.get_file_path_as_string()
                 );
 
-                // TODO: Measure time
-
                 // Read lines from input file
                 let lines = reader.read_lines()?;
 
@@ -119,14 +115,14 @@ where
     }
 
     fn solve_part_1(&self) -> SolutionResult {
-        let mut progress = SolutionProgressThread::new(PART_1_PREFIX);
+        let mut progress = SolutionProgressBarThread::new(PART_1_PREFIX);
         progress.run();
 
         self.solver.part_1()
     }
 
     fn solve_part_2(&self) -> SolutionResult {
-        let mut progress = SolutionProgressThread::new(PART_2_PREFIX);
+        let mut progress = SolutionProgressBarThread::new(PART_2_PREFIX);
         progress.run();
 
         self.solver.part_2()

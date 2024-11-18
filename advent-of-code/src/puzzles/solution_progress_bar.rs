@@ -1,11 +1,11 @@
 use indicatif::{ProgressBar, ProgressStyle};
 
 /// Command line progress bar to show progress of the computation in case of longer tasks.
-pub struct SolutionProgress {
+pub struct SolutionProgressBar {
     progress_bar: ProgressBar,
 }
 
-impl SolutionProgress {
+impl SolutionProgressBar {
     /// Create new instance of the progress bar instance
     ///
     /// # Arguments

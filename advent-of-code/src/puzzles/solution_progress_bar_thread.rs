@@ -7,20 +7,20 @@ use std::{
     time::Duration,
 };
 
-use super::solution_progress::SolutionProgress;
+use super::solution_progress_bar::SolutionProgressBar;
 
 /// Command line progress bar spawned and updated in a separate thread
-pub struct SolutionProgressThread {
-    progress: Arc<SolutionProgress>,
+pub struct SolutionProgressBarThread {
+    progress: Arc<SolutionProgressBar>,
     thread_handle: Option<JoinHandle<()>>,
     tx_stop_signal: Option<Sender<()>>,
 }
 
-impl SolutionProgressThread {
+impl SolutionProgressBarThread {
     /// Creates new instance
     pub fn new(prefix: &str) -> Self {
         Self {
-            progress: Arc::new(SolutionProgress::new(prefix)),
+            progress: Arc::new(SolutionProgressBar::new(prefix)),
             thread_handle: None,
             tx_stop_signal: None,
         }
@@ -70,7 +70,7 @@ impl SolutionProgressThread {
 }
 
 /// Automatically stop progress bar on destruction
-impl Drop for SolutionProgressThread {
+impl Drop for SolutionProgressBarThread {
     fn drop(&mut self) {
         self.finish();
     }
