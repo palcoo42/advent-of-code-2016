@@ -3,7 +3,7 @@ use advent_of_code::puzzles::{
     puzzle_solver::PuzzleSolver,
 };
 
-use super::{city::City, document::Document, puzzle_parser::PuzzleParser};
+use super::{city::City, document::Document, parser::PuzzleParser};
 
 pub struct Solver {
     document: Document,
@@ -33,6 +33,9 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        let mut city = City::new();
+        let blocks = city.find_first_intersection(&self.document);
+
+        Ok(blocks.to_string())
     }
 }
