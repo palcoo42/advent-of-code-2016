@@ -16,6 +16,10 @@ impl PuzzleSolver for Solver {
         }
     }
 
+    fn get_description(&self) -> &str {
+        "--- Day 1: No Time for a Taxicab ---"
+    }
+
     fn parse_input_file(&mut self, lines: Vec<String>) -> PuzzleResult {
         self.document = PuzzleParser::parse_lines(lines)?;
         Ok(())
