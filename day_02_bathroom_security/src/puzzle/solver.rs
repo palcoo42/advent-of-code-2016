@@ -3,7 +3,11 @@ use advent_of_code::puzzles::{
     puzzle_solver::PuzzleSolver,
 };
 
-use super::{instructions::Instructions, keypad::Keypad, parser::Parser};
+use super::{
+    instructions::Instructions,
+    keypads::{keypad::Keypad, keypad_complex::KeypadComplex, keypad_simple::KeypadSimple},
+    parser::Parser,
+};
 
 pub struct Solver {
     instructions: Instructions,
@@ -26,13 +30,16 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_1(&self) -> SolutionResult {
-        let mut keypad = Keypad::new();
+        let keypad = KeypadSimple::new();
         let code = keypad.calculate_code(&self.instructions);
 
         Ok(code)
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        let keypad = KeypadComplex::new();
+        let code = keypad.calculate_code(&self.instructions);
+
+        Ok(code)
     }
 }
