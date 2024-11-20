@@ -40,6 +40,43 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_02_bathroom_security'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_02_bathroom_security",
+                    "--package=day_02_bathroom_security"
+                ],
+                "filter": {
+                    "name": "day_02_bathroom_security",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_02_bathroom_security'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_02_bathroom_security",
+                    "--package=day_02_bathroom_security"
+                ],
+                "filter": {
+                    "name": "day_02_bathroom_security",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

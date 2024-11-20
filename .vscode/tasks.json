@@ -4,7 +4,7 @@
 		{
 			"type": "cargo",
 			"command": "run",
-			"args": [ "--package", "day_01_no_time_for_a_taxicab" ],
+			"args": [ "--package", "day_02_bathroom_security" ],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -18,27 +18,13 @@
 		{
 			"type": "cargo",
 			"command": "test",
-			"args": [ "--package", "day_01_no_time_for_a_taxicab" ],
+			"args": [ "--package", "day_02_bathroom_security" ],
 			"problemMatcher": [
 				"$rustc"
 			],
 			"group": "test",
 			"label": "$(play) cargo test",
 			"options": {"statusbar": {"color": "#b17dcb"}},
-			"presentation": {
-				"clear": true
-			}
-		},
-		{
-			"type": "cargo",
-			"command": "test",
-			"args": [ "--package", "day_01_no_time_for_a_taxicab", "test_find_first_intersection", "--", "--nocapture" ],
-			"problemMatcher": [
-				"$rustc"
-			],
-			"group": "test",
-			"label": "$(play) cargo test single",
-			"options": {"statusbar": {"color": "#d8bd45ef"}},
 			"presentation": {
 				"clear": true
 			}
