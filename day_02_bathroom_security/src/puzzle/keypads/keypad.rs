@@ -19,7 +19,7 @@ pub trait Keypad {
             }
 
             // Append to codes
-            code.push_str(&value.to_string());
+            code.push(value);
         }
 
         code
