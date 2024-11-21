@@ -7,12 +7,14 @@ use super::{parser::Parser, triangle::Triangle};
 
 pub struct Solver {
     triangles: Vec<Triangle>,
+    triangles_vertical: Vec<Triangle>,
 }
 
 impl PuzzleSolver for Solver {
     fn new() -> Self {
         Self {
             triangles: Vec::new(),
+            triangles_vertical: Vec::new(),
         }
     }
 
@@ -21,7 +23,8 @@ impl PuzzleSolver for Solver {
     }
 
     fn parse_input_file(&mut self, lines: Vec<String>) -> PuzzleResult {
-        self.triangles = Parser::parse_lines(lines)?;
+        self.triangles = Parser::parse_lines(&lines)?;
+        self.triangles_vertical = Parser::parse_lines_vertically(&lines)?;
         Ok(())
     }
 
@@ -31,6 +34,11 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        let count = self
+            .triangles_vertical
+            .iter()
+            .filter(|t| t.is_valid())
+            .count();
+        Ok(count.to_string())
     }
 }
