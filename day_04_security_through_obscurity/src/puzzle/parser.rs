@@ -8,7 +8,7 @@ use super::room::Room;
 pub struct Parser {}
 
 impl Parser {
-    pub fn parse_lines(lines: Vec<String>) -> Result<Vec<Room>, PuzzleError> {
+    pub fn parse_lines(lines: &[String]) -> Result<Vec<Room>, PuzzleError> {
         lines.iter().map(|line| Self::line_to_room(line)).collect()
     }
 

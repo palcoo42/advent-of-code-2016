@@ -18,7 +18,7 @@ impl PuzzleSolver for Solver {
         "--- Day 02: Bathroom Security ---"
     }
 
-    fn parse_input_file(&mut self, lines: Vec<String>) -> PuzzleResult {
+    fn parse_input_file(&mut self, lines: &[String]) -> PuzzleResult {
         self.rooms = Parser::parse_lines(lines)?;
         Ok(())
     }
@@ -48,13 +48,13 @@ mod tests {
     #[test]
     fn test_part_1() {
         let mut solver = Solver::new();
-        let lines = vec![
+        let lines = [
             String::from("aaaaa-bbb-z-y-x-123[abxyz]"),
             String::from("a-b-c-d-e-f-g-h-987[abcde]"),
             String::from("not-a-real-room-404[oarel]"),
             String::from("totally-real-room-200[decoy]"),
         ];
-        assert!(solver.parse_input_file(lines).is_ok());
+        assert!(solver.parse_input_file(&lines).is_ok());
 
         assert_eq!(solver.part_1().unwrap(), "1514");
     }

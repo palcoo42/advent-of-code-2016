@@ -22,9 +22,9 @@ impl PuzzleSolver for Solver {
         "--- Day 02: Bathroom Security ---"
     }
 
-    fn parse_input_file(&mut self, lines: Vec<String>) -> PuzzleResult {
-        self.triangles = Parser::parse_lines(&lines)?;
-        self.triangles_vertical = Parser::parse_lines_vertically(&lines)?;
+    fn parse_input_file(&mut self, lines: &[String]) -> PuzzleResult {
+        self.triangles = Parser::parse_lines(lines)?;
+        self.triangles_vertical = Parser::parse_lines_vertically(lines)?;
         Ok(())
     }
 
