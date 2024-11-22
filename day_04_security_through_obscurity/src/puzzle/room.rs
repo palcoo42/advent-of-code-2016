@@ -71,6 +71,35 @@ impl Room {
 
         letters
     }
+
+    pub fn decrypt(&self) -> String {
+        self.encrypted_name
+            .chars()
+            .map(|c| Self::shift_cipher(c, self.get_sector_id()))
+            .collect::<String>()
+    }
+
+    fn shift_cipher(letter: char, loops: u32) -> char {
+        match letter {
+            '-' => ' ',
+            'a'..='z' => Self::rotate_letter(letter, loops),
+            invalid => panic!("Invalid cipher letter '{invalid}'"),
+        }
+    }
+
+    fn rotate_letter(letter: char, loops: u32) -> char {
+        const A: u32 = 'a' as u32;
+        const Z: u32 = 'z' as u32;
+        const LETTER_SIZE: u32 = Z - A + 1;
+
+        let mut rotated = letter as u32 + loops % LETTER_SIZE;
+
+        if rotated > Z {
+            rotated = A + rotated - Z - 1;
+        }
+
+        char::from_u32(rotated).unwrap_or_else(|| panic!("Failed to convert '{rotated}' to u32"))
+    }
 }
 
 #[cfg(test)]
@@ -87,5 +116,23 @@ mod tests {
     #[test]
     fn test_is_fake() {
         assert!(!Room::new("totally-real-room", 200, "decoy").is_real());
+    }
+
+    #[test]
+    fn test_shift_cipher() {
+        assert_eq!(Room::shift_cipher('-', 42), ' ');
+        assert_eq!(Room::shift_cipher('a', 1), 'b');
+        assert_eq!(Room::shift_cipher('b', 1), 'c');
+        assert_eq!(Room::shift_cipher('z', 1), 'a');
+        assert_eq!(Room::shift_cipher('z', 2), 'b');
+        assert_eq!(Room::shift_cipher('q', 343), 'v');
+    }
+
+    #[test]
+    fn test_decrypt() {
+        assert_eq!(
+            Room::new("qzmt-zixmtkozy-ivhz", 343, "zimth").decrypt(),
+            "very encrypted name"
+        );
     }
 }

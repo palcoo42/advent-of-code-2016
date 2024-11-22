@@ -1,5 +1,6 @@
 use advent_of_code::puzzles::{
     puzzle::{PuzzleResult, SolutionResult},
+    puzzle_error::PuzzleError,
     puzzle_solver::PuzzleSolver,
 };
 
@@ -37,7 +38,27 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        // Look for 'North Pole object'
+        let names = self
+            .rooms
+            .iter()
+            .filter_map(|r| {
+                if r.decrypt().contains("northpole") {
+                    Some(r.get_sector_id())
+                } else {
+                    None
+                }
+            })
+            .collect::<Vec<_>>();
+
+        if names.len() != 1 {
+            return Err(PuzzleError::GenericError(format!(
+                "Only one solution is expected but '{}' found",
+                names.len()
+            )));
+        }
+
+        Ok(names[0].to_string())
     }
 }
 
