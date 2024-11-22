@@ -9,7 +9,7 @@ impl Parser {
         let mut instructions = Instructions::new();
 
         for line in lines {
-            let directions = Self::line_to_directions(&line)?;
+            let directions = Self::line_to_directions(line)?;
             instructions.push(directions);
         }
 

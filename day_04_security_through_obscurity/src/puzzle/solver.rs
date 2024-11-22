@@ -15,7 +15,7 @@ impl PuzzleSolver for Solver {
     }
 
     fn get_description(&self) -> &str {
-        "--- Day 02: Bathroom Security ---"
+        "--- Day 4: Security Through Obscurity ---"
     }
 
     fn parse_input_file(&mut self, lines: &[String]) -> PuzzleResult {
