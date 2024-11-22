@@ -1,0 +1,8 @@
+[package]
+name = "day_04_security_through_obscurity"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+advent-of-code = { git = "https://github.com/palcoo42/advent-of-code.git", version = "1.0.*" }
+regex = { version = "1.11.*" }

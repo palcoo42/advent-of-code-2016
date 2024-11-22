@@ -77,6 +77,80 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_03_squares_with_three_sides'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_03_squares_with_three_sides",
+                    "--package=day_03_squares_with_three_sides"
+                ],
+                "filter": {
+                    "name": "day_03_squares_with_three_sides",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_03_squares_with_three_sides'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_03_squares_with_three_sides",
+                    "--package=day_03_squares_with_three_sides"
+                ],
+                "filter": {
+                    "name": "day_03_squares_with_three_sides",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_04_security_through_obscurity'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_04_security_through_obscurity",
+                    "--package=day_04_security_through_obscurity"
+                ],
+                "filter": {
+                    "name": "day_04_security_through_obscurity",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_04_security_through_obscurity'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_04_security_through_obscurity",
+                    "--package=day_04_security_through_obscurity"
+                ],
+                "filter": {
+                    "name": "day_04_security_through_obscurity",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
