@@ -12,7 +12,7 @@ impl PuzzleParser {
         Self {}
     }
 
-    pub fn parse_lines(lines: &[String]) -> Result<Document, PuzzleError> {
+    pub fn parse_lines(lines: &[&str]) -> Result<Document, PuzzleError> {
         if lines.len() > 1 {
             return Err(PuzzleError::InvalidContentError(format!(
                 "Only one input line is expected in input file, found: '{}'",
@@ -20,7 +20,7 @@ impl PuzzleParser {
             )));
         }
 
-        let actions = Self::parse_line(&lines[0])?;
+        let actions = Self::parse_line(lines[0])?;
         Ok(Document::new(actions))
     }
 
@@ -67,7 +67,7 @@ mod tests {
     #[test]
     fn test_parse_line() {
         assert_eq!(
-            PuzzleParser::parse_lines(&[String::from("L1, R3, R1, L5, L2, L5, R4")]).unwrap(),
+            PuzzleParser::parse_lines(&["L1, R3, R1, L5, L2, L5, R4"]).unwrap(),
             Document::new(vec![
                 Action::Left(1),
                 Action::Right(3),

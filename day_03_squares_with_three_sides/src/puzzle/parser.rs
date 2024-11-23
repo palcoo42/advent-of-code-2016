@@ -5,7 +5,7 @@ use super::triangle::Triangle;
 pub struct Parser {}
 
 impl Parser {
-    pub fn parse_lines(lines: &[String]) -> Result<Vec<Triangle>, PuzzleError> {
+    pub fn parse_lines(lines: &[&str]) -> Result<Vec<Triangle>, PuzzleError> {
         let mut triangles = Vec::new();
 
         for line in lines {
@@ -16,7 +16,7 @@ impl Parser {
         Ok(triangles)
     }
 
-    pub fn parse_lines_vertically(lines: &[String]) -> Result<Vec<Triangle>, PuzzleError> {
+    pub fn parse_lines_vertically(lines: &[&str]) -> Result<Vec<Triangle>, PuzzleError> {
         // Verify that number of lines is divisible by 3, i.e. we can make valid triangles
         if lines.len() % 3 != 0 {
             return Err(PuzzleError::InvalidContentError(String::from("Cannot create triangle vertically [Number of lines in the input file is not divisible by 3]")));
@@ -134,11 +134,7 @@ mod tests {
 
     #[test]
     fn test_parse_lines_vertically() {
-        let lines = [
-            String::from("1 2 3"),
-            String::from("4 5 6"),
-            String::from("7 8 9"),
-        ];
+        let lines = ["1 2 3", "4 5 6", "7 8 9"];
 
         let result = Parser::parse_lines_vertically(&lines);
         assert!(result.is_ok(), "Failed result: {:?}", result);

@@ -19,7 +19,7 @@ impl PuzzleSolver for Solver {
         "--- Day 4: Security Through Obscurity ---"
     }
 
-    fn parse_input_file(&mut self, lines: &[String]) -> PuzzleResult {
+    fn parse_input_file(&mut self, lines: &[&str]) -> PuzzleResult {
         self.rooms = Parser::parse_lines(lines)?;
         Ok(())
     }
@@ -70,10 +70,10 @@ mod tests {
     fn test_part_1() {
         let mut solver = Solver::new();
         let lines = [
-            String::from("aaaaa-bbb-z-y-x-123[abxyz]"),
-            String::from("a-b-c-d-e-f-g-h-987[abcde]"),
-            String::from("not-a-real-room-404[oarel]"),
-            String::from("totally-real-room-200[decoy]"),
+            "aaaaa-bbb-z-y-x-123[abxyz]",
+            "a-b-c-d-e-f-g-h-987[abcde]",
+            "not-a-real-room-404[oarel]",
+            "totally-real-room-200[decoy]",
         ];
         assert!(solver.parse_input_file(&lines).is_ok());
 

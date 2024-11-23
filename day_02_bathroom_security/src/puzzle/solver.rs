@@ -24,7 +24,7 @@ impl PuzzleSolver for Solver {
         "--- Day 02: Bathroom Security ---"
     }
 
-    fn parse_input_file(&mut self, lines: &[String]) -> PuzzleResult {
+    fn parse_input_file(&mut self, lines: &[&str]) -> PuzzleResult {
         self.instructions = Parser::parse_lines(lines)?;
         Ok(())
     }

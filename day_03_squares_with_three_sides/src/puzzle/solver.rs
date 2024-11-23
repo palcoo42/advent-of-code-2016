@@ -22,7 +22,7 @@ impl PuzzleSolver for Solver {
         "--- Day 3: Squares With Three Sides ---"
     }
 
-    fn parse_input_file(&mut self, lines: &[String]) -> PuzzleResult {
+    fn parse_input_file(&mut self, lines: &[&str]) -> PuzzleResult {
         self.triangles = Parser::parse_lines(lines)?;
         self.triangles_vertical = Parser::parse_lines_vertically(lines)?;
         Ok(())

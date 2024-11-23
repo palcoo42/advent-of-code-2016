@@ -4,8 +4,8 @@ version = 3
 
 [[package]]
 name = "advent-of-code"
-version = "1.1.1"
-source = "git+https://github.com/palcoo42/advent-of-code.git#131aa4903ab125a3568b713ff8d2bce6b6770a6c"
+version = "1.2.0"
+source = "git+https://github.com/palcoo42/advent-of-code.git#9f18bf51410cd7bbe7e281609860608d22dac494"
 dependencies = [
  "indicatif",
  "temp-env",

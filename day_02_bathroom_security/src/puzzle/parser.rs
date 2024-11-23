@@ -5,7 +5,7 @@ use super::{direction::Direction, instructions::Instructions};
 pub struct Parser {}
 
 impl Parser {
-    pub fn parse_lines(lines: &[String]) -> Result<Instructions, PuzzleError> {
+    pub fn parse_lines(lines: &[&str]) -> Result<Instructions, PuzzleError> {
         let mut instructions = Instructions::new();
 
         for line in lines {

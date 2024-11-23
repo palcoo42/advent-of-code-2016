@@ -20,7 +20,7 @@ impl PuzzleSolver for Solver {
         "--- Day 1: No Time for a Taxicab ---"
     }
 
-    fn parse_input_file(&mut self, lines: &[String]) -> PuzzleResult {
+    fn parse_input_file(&mut self, lines: &[&str]) -> PuzzleResult {
         self.document = PuzzleParser::parse_lines(lines)?;
         Ok(())
     }
