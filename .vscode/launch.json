@@ -151,6 +151,43 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_05_how_about_a_nice_game_of_chess'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_05_how_about_a_nice_game_of_chess",
+                    "--package=day_05_how_about_a_nice_game_of_chess"
+                ],
+                "filter": {
+                    "name": "day_05_how_about_a_nice_game_of_chess",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_05_how_about_a_nice_game_of_chess'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_05_how_about_a_nice_game_of_chess",
+                    "--package=day_05_how_about_a_nice_game_of_chess"
+                ],
+                "filter": {
+                    "name": "day_05_how_about_a_nice_game_of_chess",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

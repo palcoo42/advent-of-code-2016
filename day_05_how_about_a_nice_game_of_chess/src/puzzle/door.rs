@@ -1,10 +1,9 @@
 use advent_of_code::puzzles::puzzle_error::PuzzleError;
 
-// Length of the password
-const PASSWORD_LENGTH: usize = 8;
+use super::passwords::password::Password;
 
 // Digest length which is analyzed
-const DIGEST_LENGTH: usize = 5;
+pub const DIGEST_LENGTH: usize = 5;
 
 // Digest code when we have found a solution
 const DIGEST_CODE: &str = "00000";
@@ -20,27 +19,27 @@ impl Door {
         }
     }
 
-    pub fn decode_password(&self) -> Result<String, PuzzleError> {
-        let mut pwd = String::with_capacity(PASSWORD_LENGTH);
+    pub fn decode_password<T>(&self) -> Result<String, PuzzleError>
+    where
+        T: Password,
+    {
+        // Password is generic to support different algorithms
+        let mut password = T::new();
+
+        // Current number used for MD5 calculation
         let mut number = 0_usize;
 
-        while pwd.len() < PASSWORD_LENGTH && number < usize::MAX {
+        while !password.is_complete() && number < usize::MAX {
             // Calculate MD5 for current code
             let code = format!("{}{}", self.door_id, number);
             let md5 = Self::calc_md5(&code);
 
-            // If we have a valid solution append 6th character to the code
+            // If we have found solution hash update password
             if md5.starts_with(DIGEST_CODE) {
-                pwd.push(md5.chars().nth(DIGEST_LENGTH).unwrap_or_else(|| {
-                    panic!(
-                        "Failed to unwrap {}th value from '{}'",
-                        DIGEST_LENGTH + 1,
-                        md5
-                    )
-                }));
+                password.update(&md5);
 
-                if pwd.len() == PASSWORD_LENGTH {
-                    return Ok(pwd);
+                if password.is_complete() {
+                    return Ok(password.get());
                 }
             }
 
@@ -61,16 +60,28 @@ impl Door {
 
 #[cfg(test)]
 mod tests {
+    use crate::puzzle::passwords::{complex::ComplexPassword, simple::SimplePassword};
+
     use super::*;
 
     #[test]
     #[ignore = "Long running test"]
-    fn test_decode_password() {
+    fn test_decode_password_simple() {
         let door = Door::new("abc");
-        let result = door.decode_password();
+        let result = door.decode_password::<SimplePassword>();
 
         assert!(result.is_ok(), "Result: {:?}", result);
         assert_eq!(result.unwrap(), "18f47a30");
+    }
+
+    #[test]
+    #[ignore = "Long running test"]
+    fn test_decode_password_complex() {
+        let door = Door::new("abc");
+        let result = door.decode_password::<ComplexPassword>();
+
+        assert!(result.is_ok(), "Result: {:?}", result);
+        assert_eq!(result.unwrap(), "05ace8e3");
     }
 
     #[test]

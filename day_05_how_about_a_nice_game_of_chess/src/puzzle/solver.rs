@@ -3,7 +3,10 @@ use advent_of_code::puzzles::{
     puzzle_solver::PuzzleSolver,
 };
 
-use super::door::Door;
+use super::{
+    door::Door,
+    passwords::{complex::ComplexPassword, simple::SimplePassword},
+};
 
 pub struct Solver {}
 
@@ -22,12 +25,15 @@ impl PuzzleSolver for Solver {
 
     fn part_1(&self) -> SolutionResult {
         let door = Door::new("reyedfim");
-        let pwd = door.decode_password()?;
+        let pwd = door.decode_password::<SimplePassword>()?;
 
         Ok(pwd)
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        let door = Door::new("reyedfim");
+        let pwd = door.decode_password::<ComplexPassword>()?;
+
+        Ok(pwd)
     }
 }
