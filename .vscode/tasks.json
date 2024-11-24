@@ -4,7 +4,7 @@
 		{
 			"type": "cargo",
 			"command": "run",
-			"args": [ "--package", "day_05_how_about_a_nice_game_of_chess" ],
+			"args": [ "--package", "day_6_signals_and_noise" ],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -18,8 +18,7 @@
 		{
 			"type": "cargo",
 			"command": "test",
-			"args": [ "--package", "day_05_how_about_a_nice_game_of_chess",
-		"--", "--nocapture" ],
+			"args": [ "--package", "day_6_signals_and_noise" ],
 			"problemMatcher": [
 				"$rustc"
 			],
