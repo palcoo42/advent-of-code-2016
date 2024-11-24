@@ -1,5 +1,5 @@
 [package]
-name = "day_6_signals_and_noise"
+name = "day_06_signals_and_noise"
 version = "0.1.0"
 edition = "2021"
 
