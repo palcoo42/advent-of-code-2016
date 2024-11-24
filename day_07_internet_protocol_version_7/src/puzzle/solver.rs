@@ -36,6 +36,12 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        let count = self
+            .addresses
+            .iter()
+            .filter(|&ipv7| ipv7.is_ssl_supported())
+            .count();
+
+        Ok(count.to_string())
     }
 }

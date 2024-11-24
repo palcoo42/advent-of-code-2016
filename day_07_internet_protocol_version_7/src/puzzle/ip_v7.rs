@@ -1,6 +1,5 @@
-use core::panic;
-
 const ABBA_LENGTH: usize = 4;
+const ABA_LENGTH: usize = 3;
 
 pub struct Ipv7 {
     address: String,
@@ -19,14 +18,14 @@ impl Ipv7 {
         let mut invalid_abba = false;
 
         for i in 0..=self.address.len() - ABBA_LENGTH {
-            let first = self.get_char(i);
+            let first = &self.address[i..=i];
 
             match first {
-                '[' => {
+                "[" => {
                     inside_brackets = true;
                     continue;
                 }
-                ']' => {
+                "]" => {
                     inside_brackets = false;
                     continue;
                 }
@@ -53,17 +52,65 @@ impl Ipv7 {
         valid_abba
     }
 
-    fn get_char(&self, n: usize) -> char {
-        self.address
-            .chars()
-            .nth(n)
-            .unwrap_or_else(|| panic!("Failed to access element '{}' in '{}'", n, self.address))
+    fn is_abba(&self, index: usize) -> bool {
+        self.address[index..=index] == self.address[index + 3..=index + 3]
+            && self.address[index + 1..=index + 1] == self.address[index + 2..=index + 2]
+            && self.address[index..=index] != self.address[index + 1..=index + 1]
     }
 
-    fn is_abba(&self, index: usize) -> bool {
-        self.get_char(index) == self.get_char(index + 3)
-            && self.get_char(index + 1) == self.get_char(index + 2)
-            && self.get_char(index) != self.get_char(index + 1)
+    pub fn is_ssl_supported(&self) -> bool {
+        let mut inside_brackets = false;
+        let mut aba_collection = Vec::new();
+        let mut bab_collection = Vec::new();
+
+        for i in 0..=self.address.len() - ABA_LENGTH {
+            let first = &self.address[i..=i];
+
+            match first {
+                "[" => {
+                    inside_brackets = true;
+                    continue;
+                }
+                "]" => {
+                    inside_brackets = false;
+                    continue;
+                }
+                _ => {}
+            }
+
+            if let Some(aba) = self.is_aba(i) {
+                match inside_brackets {
+                    false => {
+                        aba_collection.push(aba);
+                    }
+                    true => {
+                        bab_collection.push(aba);
+                    }
+                }
+            }
+        }
+
+        // Check is we have the related ABA in BAB
+        for aba in aba_collection {
+            if bab_collection.iter().any(|bab| Self::is_related(aba, bab)) {
+                return true;
+            }
+        }
+
+        false
+    }
+
+    fn is_aba(&self, index: usize) -> Option<&str> {
+        if self.address[index..=index] == self.address[index + 2..=index + 2]
+            && self.address[index..=index] != self.address[index + 1..=index + 1]
+        {
+            return Some(&self.address[index..=index + 2]);
+        }
+        None
+    }
+
+    fn is_related(aba: &str, bab: &str) -> bool {
+        aba[0..=0] == bab[1..=1] && aba[1..=1] == bab[0..=0]
     }
 }
 
@@ -96,5 +143,20 @@ mod tests {
         assert!(!Ipv7::new("abcd[bddb]xyyx").is_tls_supported());
         assert!(!Ipv7::new("aaaa[qwer]tyui").is_tls_supported());
         assert!(!Ipv7::new("aaaa[xyyx]abba").is_tls_supported());
+    }
+
+    #[test]
+    fn test_is_ssl_supported() {
+        assert!(Ipv7::new("aba[bab]xyz").is_ssl_supported());
+        assert!(Ipv7::new("aaa[kek]eke").is_ssl_supported());
+        assert!(Ipv7::new("zazbz[bzb]cdb").is_ssl_supported());
+
+        assert!(!Ipv7::new("xyx[xyx]xyx").is_ssl_supported());
+    }
+
+    #[test]
+    fn is_related() {
+        assert!(Ipv7::is_related("aba", "bab"));
+        assert!(!Ipv7::is_related("aba", "xax"));
     }
 }
