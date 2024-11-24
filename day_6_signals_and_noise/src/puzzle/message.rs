@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, usize};
 
 use super::signal::Signal;
 
@@ -11,7 +11,7 @@ impl Message {
         Self { signals }
     }
 
-    pub fn find_corrected_message(&self) -> String {
+    fn collect_characters_usages(&self) -> Vec<HashMap<char, usize>> {
         // Count usages of characters per column between all signals
         let length = self.get_columns_len();
 
@@ -34,6 +34,13 @@ impl Message {
             }
         }
 
+        usages
+    }
+
+    pub fn find_message_max_occurrences(&self) -> String {
+        // Count usages of characters within columns
+        let usages = self.collect_characters_usages();
+
         // In every columns find character with most occurrences
         usages
             .iter()
@@ -49,6 +56,29 @@ impl Message {
                 });
 
                 max_char
+            })
+            .collect::<String>()
+    }
+
+    pub fn find_message_min_occurrences(&self) -> String {
+        // Count usages of characters within columns
+        let usages = self.collect_characters_usages();
+
+        // In every columns find character with least occurrences
+        usages
+            .iter()
+            .map(|map| {
+                let mut min_count = usize::MAX;
+                let mut min_char = ' ';
+
+                map.iter().for_each(|(c, count)| {
+                    if *count < min_count {
+                        min_count = *count;
+                        min_char = *c;
+                    }
+                });
+
+                min_char
             })
             .collect::<String>()
     }
@@ -69,8 +99,7 @@ impl Message {
 mod tests {
     use super::*;
 
-    #[test]
-    fn test_find_corrected_message() {
+    fn create_message() -> Message {
         let signals = vec![
             Signal::new("eedadn"),
             Signal::new("drvtee"),
@@ -90,8 +119,20 @@ mod tests {
             Signal::new("enarar"),
         ];
 
-        let message = Message::new(signals);
+        Message::new(signals)
+    }
 
-        assert_eq!(message.find_corrected_message(), "easter");
+    #[test]
+    fn test_find_message_max_occurrences() {
+        let message = create_message();
+
+        assert_eq!(message.find_message_max_occurrences(), "easter");
+    }
+
+    #[test]
+    fn test_find_message_min_occurrences() {
+        let message = create_message();
+
+        assert_eq!(message.find_message_min_occurrences(), "advent");
     }
 }

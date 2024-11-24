@@ -26,11 +26,10 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_1(&self) -> SolutionResult {
-        let corrected = self.message.find_corrected_message();
-        Ok(corrected)
+        Ok(self.message.find_message_max_occurrences())
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        Ok(self.message.find_message_min_occurrences())
     }
 }
