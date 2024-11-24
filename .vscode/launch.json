@@ -188,6 +188,80 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_06_signals_and_noise'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_06_signals_and_noise",
+                    "--package=day_06_signals_and_noise"
+                ],
+                "filter": {
+                    "name": "day_06_signals_and_noise",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_06_signals_and_noise'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_06_signals_and_noise",
+                    "--package=day_06_signals_and_noise"
+                ],
+                "filter": {
+                    "name": "day_06_signals_and_noise",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_07_internet_protocol_version_7'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_07_internet_protocol_version_7",
+                    "--package=day_07_internet_protocol_version_7"
+                ],
+                "filter": {
+                    "name": "day_07_internet_protocol_version_7",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_07_internet_protocol_version_7'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_07_internet_protocol_version_7",
+                    "--package=day_07_internet_protocol_version_7"
+                ],
+                "filter": {
+                    "name": "day_07_internet_protocol_version_7",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

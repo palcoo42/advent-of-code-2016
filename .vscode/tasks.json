@@ -4,7 +4,7 @@
 		{
 			"type": "cargo",
 			"command": "run",
-			"args": [ "--package", "day_06_signals_and_noise" ],
+			"args": [ "--package", "day_07_internet_protocol_version_7" ],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -18,7 +18,7 @@
 		{
 			"type": "cargo",
 			"command": "test",
-			"args": [ "--package", "day_06_signals_and_noise" ],
+			"args": [ "--package", "day_07_internet_protocol_version_7" ],
 			"problemMatcher": [
 				"$rustc"
 			],
