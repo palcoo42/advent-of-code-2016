@@ -262,6 +262,43 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_08_twofactor_authentication'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_08_twofactor_authentication",
+                    "--package=day_08_twofactor_authentication"
+                ],
+                "filter": {
+                    "name": "day_08_twofactor_authentication",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_08_twofactor_authentication'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_08_twofactor_authentication",
+                    "--package=day_08_twofactor_authentication"
+                ],
+                "filter": {
+                    "name": "day_08_twofactor_authentication",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

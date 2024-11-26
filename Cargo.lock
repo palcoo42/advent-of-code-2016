@@ -111,6 +111,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "day_08_twofactor_authentication"
+version = "0.1.0"
+dependencies = [
+ "advent-of-code",
+ "regex",
+]
+
+[[package]]
 name = "encode_unicode"
 version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
