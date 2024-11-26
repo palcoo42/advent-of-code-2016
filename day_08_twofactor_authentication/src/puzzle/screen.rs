@@ -58,12 +58,28 @@ impl Screen {
             .filter(|&light| *light == Light::On)
             .count()
     }
+
+    pub fn get_code(&self) -> String {
+        let mut code = String::with_capacity(self.rows * (self.cols + 2));
+
+        code.push('\n'); // Force generic display function to start to draw on the next line
+
+        for row in 0..self.rows {
+            for col in 0..self.cols {
+                code.push(self.lights[row][col].to_char());
+            }
+
+            code.push('\n');
+        }
+
+        code
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use crate::puzzle::commands::{
-        rectangle::Rectangle, rotate_column::RotateColumn, rotate_row::RotateRow,
+        command::Command, rectangle::Rectangle, rotate_column::RotateColumn, rotate_row::RotateRow,
     };
 
     use super::*;

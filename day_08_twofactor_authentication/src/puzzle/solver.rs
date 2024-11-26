@@ -39,6 +39,12 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        let mut screen = Screen::new(SCREEN_HEIGHT, SCREEN_WIDTH);
+
+        for cmd in &self.commands {
+            cmd.draw_on_screen(&mut screen);
+        }
+
+        Ok(screen.get_code())
     }
 }
