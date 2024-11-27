@@ -4,7 +4,7 @@
 		{
 			"type": "cargo",
 			"command": "run",
-			"args": [ "--package", "day_08_twofactor_authentication" ],
+			"args": [ "--package", "day_09_explosives_in_cyberspace" ],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -18,7 +18,7 @@
 		{
 			"type": "cargo",
 			"command": "test",
-			"args": [ "--package", "day_08_twofactor_authentication" ],
+			"args": [ "--package", "day_09_explosives_in_cyberspace" ],
 			"problemMatcher": [
 				"$rustc"
 			],

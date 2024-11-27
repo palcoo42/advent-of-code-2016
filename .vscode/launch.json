@@ -299,6 +299,43 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_09_explosives_in_cyberspace'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_09_explosives_in_cyberspace",
+                    "--package=day_09_explosives_in_cyberspace"
+                ],
+                "filter": {
+                    "name": "day_09_explosives_in_cyberspace",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_09_explosives_in_cyberspace'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_09_explosives_in_cyberspace",
+                    "--package=day_09_explosives_in_cyberspace"
+                ],
+                "filter": {
+                    "name": "day_09_explosives_in_cyberspace",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
