@@ -31,6 +31,7 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        let decoded = Compression::decompress_v2(&self.content)?;
+        Ok(decoded.to_string())
     }
 }
