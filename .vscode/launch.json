@@ -336,6 +336,43 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day_10_balance_bots'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day_10_balance_bots",
+                    "--package=day_10_balance_bots"
+                ],
+                "filter": {
+                    "name": "day_10_balance_bots",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_10_balance_bots'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_10_balance_bots",
+                    "--package=day_10_balance_bots"
+                ],
+                "filter": {
+                    "name": "day_10_balance_bots",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

@@ -4,7 +4,7 @@
 		{
 			"type": "cargo",
 			"command": "run",
-			"args": [ "--package", "day_09_explosives_in_cyberspace" ],
+			"args": [ "--package", "day_10_balance_bots" ],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -18,7 +18,7 @@
 		{
 			"type": "cargo",
 			"command": "test",
-			"args": [ "--package", "day_09_explosives_in_cyberspace" ],
+			"args": [ "--package", "day_10_balance_bots" ],
 			"problemMatcher": [
 				"$rustc"
 			],
