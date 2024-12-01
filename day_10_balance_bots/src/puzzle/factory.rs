@@ -38,6 +38,7 @@ impl Factory {
     }
 
     pub fn find_bot_who_compares_chips(&mut self, chips: &[usize]) -> Result<usize, PuzzleError> {
+        // We expect exactly two chips to check
         if chips.len() != 2 {
             return Err(PuzzleError::GenericError(format!(
                 "Exactly two chips are expected '{:?}'",
@@ -50,6 +51,7 @@ impl Factory {
         chips.sort();
 
         // Run factory
+        let mut bot_id_comparison = None;
         let mut remaining_bots = self.bots.keys().cloned().collect::<VecDeque<_>>();
 
         while let Some(bot_id) = remaining_bots.pop_front() {
@@ -70,7 +72,7 @@ impl Factory {
                 self.distribute_chip(high_recipient, high_chip);
 
                 if low_chip == *chips[0] && high_chip == *chips[1] {
-                    return Ok(bot_id);
+                    bot_id_comparison = Some(bot_id);
                 }
             } else {
                 // We need to wait for both chips to be available
@@ -78,9 +80,34 @@ impl Factory {
             }
         }
 
-        Err(PuzzleError::GenericError(String::from(
+        bot_id_comparison.ok_or(PuzzleError::GenericError(String::from(
             "Failed to find bot",
         )))
+    }
+
+    pub fn calculate_output_bins(&mut self) -> Result<usize, PuzzleError> {
+        Ok(self.get_output(0)? * self.get_output(1)? * self.get_output(2)?)
+    }
+
+    fn get_output(&self, id: usize) -> Result<usize, PuzzleError> {
+        // Double check if we have exactly one value in given output id
+        let output = self
+            .outputs
+            .get(&id)
+            .ok_or(PuzzleError::GenericError(format!(
+                "Failed to read 'output {}'",
+                id,
+            )))?;
+
+        if output.len() != 1 {
+            return Err(PuzzleError::GenericError(format!(
+                "Length of 'output {}' != 1 [{}]",
+                id,
+                output.len()
+            )));
+        }
+
+        Ok(output[0])
     }
 
     fn distribute_chip(&mut self, recipient: Recipient, chip: usize) {

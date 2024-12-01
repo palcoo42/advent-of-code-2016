@@ -37,6 +37,8 @@ impl PuzzleSolver for Solver {
     }
 
     fn part_2(&self) -> SolutionResult {
-        Ok(String::from("not solved"))
+        let output_bins = self.factory.borrow_mut().calculate_output_bins()?;
+
+        Ok(output_bins.to_string())
     }
 }
