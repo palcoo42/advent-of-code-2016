@@ -1,0 +1,17 @@
+[workspace]
+resolver = "3"
+members = [
+    "day_01_no_time_for_a_taxicab",
+]
+
+[workspace.dependencies]
+divisors_fixed = { version = "0.*" }
+hex = { version = "0.*" }
+itertools = { version = "0.*" }
+md5 = { version = "0.*" }
+pathfinding = { version = "4.*" }
+puzzler = { git = "https://github.com/palcoo42/puzzler.git", branch = "master" }
+# puzzler = { path = "/home/dev/workspace/puzzler" }
+regex = { version = "1.*" }
+serde = { version = "1.*" }
+serde_json = { version = "1.*" }

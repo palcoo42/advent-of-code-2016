@@ -1,0 +1,8 @@
+[package]
+name = "day_01_no_time_for_a_taxicab"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+puzzler = { workspace = true }
+regex = { workspace = true }
