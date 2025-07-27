@@ -34,6 +34,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "day_04_security_through_obscurity"
+version = "0.1.0"
+dependencies = [
+ "puzzler",
+]
+
+[[package]]
 name = "memchr"
 version = "2.7.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"

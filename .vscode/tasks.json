@@ -5,7 +5,7 @@
 			"type": "cargo",
 			"command": "run",
 			"args": [ "--release",
-				      "--package", "day_03_squares_with_three_sides" ],
+				      "--package", "day_04_security_through_obscurity" ],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -20,7 +20,7 @@
 			"type": "cargo",
 			"command": "test",
 			"args": [ "--release",
-				      "--package", "day_03_squares_with_three_sides",
+				      "--package", "day_04_security_through_obscurity",
 					  // "--",
 					  // "--nocapture"
 				    ],
