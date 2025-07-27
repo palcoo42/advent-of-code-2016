@@ -4,35 +4,142 @@
 		{
 			"type": "cargo",
 			"command": "run",
-			"args": [ "--release",
-				      "--package", "day_04_security_through_obscurity" ],
+			"args": [
+				"--release",
+				"--package",
+				"day_01_no_time_for_a_taxicab"
+			],
 			"problemMatcher": [
 				"$rustc"
 			],
 			"group": "build",
-			"label": "$(play) run",
-			"options": {"statusbar": {"color": "#7dcb8b"}},
-			"presentation": {
-				"clear": true
-			},
+			"label": "$(play) day_01_no_time_for_a_taxicab",
 		},
-		{
+				{
 			"type": "cargo",
 			"command": "test",
-			"args": [ "--release",
-				      "--package", "day_04_security_through_obscurity",
-					  // "--",
-					  // "--nocapture"
-				    ],
+			"args": [
+				"--release",
+				"--",
+				"--include-ignored"
+			],
 			"problemMatcher": [
 				"$rustc"
 			],
 			"group": "test",
-			"label": "$(play) test",
-			"options": {"statusbar": {"color": "#b17dcb"}},
-			"presentation": {
-				"clear": true
-			}
+			"label": "$(play) day_01_no_time_for_a_taxicab",
+		},
+		{
+			"type": "cargo",
+			"command": "run",
+			"args": [
+				"--release",
+				"--package",
+				"day_02_bathroom_security"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "$(play) day_02_bathroom_security",
+		},
+				{
+			"type": "cargo",
+			"command": "test",
+			"args": [
+				"--release",
+				"--",
+				"--include-ignored"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "$(play) day_02_bathroom_security",
+		},
+		{
+			"type": "cargo",
+			"command": "run",
+			"args": [
+				"--release",
+				"--package",
+				"day_03_squares_with_three_sides"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "$(play) day_03_squares_with_three_sides",
+		},
+				{
+			"type": "cargo",
+			"command": "test",
+			"args": [
+				"--release",
+				"--",
+				"--include-ignored"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "$(play) day_03_squares_with_three_sides",
+		},
+		{
+			"type": "cargo",
+			"command": "run",
+			"args": [
+				"--release",
+				"--package",
+				"day_04_security_through_obscurity"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "$(play) day_04_security_through_obscurity",
+		},
+				{
+			"type": "cargo",
+			"command": "test",
+			"args": [
+				"--release",
+				"--",
+				"--include-ignored"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "$(play) day_04_security_through_obscurity",
+		},
+		{
+			"type": "cargo",
+			"command": "run",
+			"args": [
+				"--release",
+				"--package",
+				"day_05_how_about_a_nice_game_of_chess"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "$(play) day_05_how_about_a_nice_game_of_chess",
+		},
+		{
+			"type": "cargo",
+			"command": "test",
+			"args": [
+				"--release",
+				"--package",
+				"day_05_how_about_a_nice_game_of_chess"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "$(play) day_05_how_about_a_nice_game_of_chess",
 		},
 		{
 			"type": "cargo",
@@ -46,11 +153,7 @@
 				"$rustc"
 			],
 			"group": "test",
-			"label": "$(play) test all",
-			"options": {"statusbar": {"color": "#cb7d92"}},
-			"presentation": {
-				"clear": true
-			}
-		}
+			"label": "$(play) Advent Of Code 2016",
+		},
 	]
 }
