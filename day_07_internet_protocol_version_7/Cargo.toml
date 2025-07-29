@@ -1,0 +1,9 @@
+[package]
+name = "day_07_internet_protocol_version_7"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+once_cell = { workspace = true }
+puzzler = { workspace = true }
+regex = { workspace = true }

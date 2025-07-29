@@ -4,7 +4,7 @@ members = [
     "day_01_no_time_for_a_taxicab",
     "day_02_bathroom_security",
     "day_03_squares_with_three_sides",
-    "day_04_security_through_obscurity", "day_05_how_about_a_nice_game_of_chess", "day_06_signals_and_noise",
+    "day_04_security_through_obscurity", "day_05_how_about_a_nice_game_of_chess", "day_06_signals_and_noise", "day_07_internet_protocol_version_7",
 ]
 
 [workspace.dependencies]
@@ -12,6 +12,7 @@ divisors_fixed = { version = "0.*" }
 hex = { version = "0.*" }
 itertools = { version = "0.*" }
 md5 = { version = "0.*" }
+once_cell = "1.*"
 pathfinding = { version = "4.*" }
 puzzler = { git = "https://github.com/palcoo42/puzzler.git", branch = "master" }
 # puzzler = { path = "/home/dev/workspace/puzzler" }

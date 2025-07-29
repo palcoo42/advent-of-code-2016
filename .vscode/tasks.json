@@ -171,6 +171,34 @@
 		},
 		{
 			"type": "cargo",
+			"command": "run",
+			"args": [
+				"--release",
+				"--package",
+				"day_07_internet_protocol_version_7"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "$(play) day_07_internet_protocol_version_7",
+		},
+		{
+			"type": "cargo",
+			"command": "test",
+			"args": [
+				"--release",
+				"--package",
+				"day_07_internet_protocol_version_7"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "$(play) day_07_internet_protocol_version_7",
+		},
+		{
+			"type": "cargo",
 			"command": "test",
 			"args": [
 				"--release",
